@@ -6,11 +6,21 @@
   --dark: #212121;
   --dark-grey: #2f303a;
   --grey: #757575;
+  --semigrey: #ececec;
+  --border-grey: #eeeeee;
   --lightgrey: #f5f4fa;
   --blue: #2196f3;
   --white-grey: #f5f5f5;
   --white: #fff;
   --opasity: rgba(255, 255, 255, 0.6);
+}
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 body {
   font-family: var(--f-roboto);
@@ -23,6 +33,7 @@ body {
   padding: 0 15px;
   margin: 0 auto;
 }
+
 h1,
 h2,
 h3,
@@ -44,8 +55,15 @@ img {
 }
 .header {
   background-color: var(--white);
+  border-bottom: 1px solid var(--semigrey);
+}
+.header-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .header-logo {
+  margin-right: 93px;
   font-family: var(--f-raleway);
   font-weight: 700;
   font-size: 26px;
@@ -57,22 +75,30 @@ img {
 .header-logo span {
   color: var(--blue);
 }
-/* .header ul {
-    list-style: none;
-} */
 .header-menu,
 .header-contacts {
+  display: flex;
   list-style: none;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
 }
+.header-menu li:not(:last-child),
+.header-contacts li:not(:last-child) {
+  margin-right: 50px;
+}
 .header-menu-link {
+  display: block;
+  padding-top: 20px;
+  padding-bottom: 20px;
   color: var(--dark);
   text-decoration: none;
 }
 .header-contacts-link {
+  display: block;
+  padding-top: 20px;
+  padding-bottom: 20px;
   color: var(--grey);
   text-decoration: none;
 }
@@ -82,6 +108,9 @@ img {
 .header-contacts-link:focus,
 .header-menu-link.active {
   color: var(--blue);
+}
+.header-contacts {
+  margin-left: auto;
 }
 /* Header end */
 .hero {
@@ -104,7 +133,7 @@ img {
   margin: 30px auto 0;
   padding: 10px 32px;
   font-weight: 700;
-  font-size: 16px;
+  font-size: var(--f-size16);
   line-height: 1.88;
   letter-spacing: 0.06em;
   color: var(--white);
@@ -127,14 +156,25 @@ img {
   clip-path: inset(50%);
   margin: -1px;
 }
+.advantages-block {
+  width: 270px;
+  margin-bottom: 30px;
+}
+.advantages-block:not(:last-child) {
+  margin-right: 30px;
+}
+.advantages-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
 .advantages-title {
+  display: block;
+  margin-bottom: 10px;
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-}
-.advantages-list {
-  list-style: none;
 }
 .advantages-text {
   font-size: 14px;
@@ -147,9 +187,12 @@ img {
 }
 .section-title {
   font-size: 36px;
-  line-height: 3;
+  line-height: 1.17;
   text-align: center;
   letter-spacing: 0.03em;
+}
+.section-title {
+  margin-bottom: 50px;
 }
 .directions-list {
   display: flex;
@@ -174,6 +217,9 @@ img {
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 0px 0px 4px 4px;
 }
+.team-item-descr {
+  padding: 30px 30px;
+}
 .team-item-title {
   font-size: var(--f-size16);
   font-weight: 500;
@@ -181,7 +227,9 @@ img {
   text-align: center;
   letter-spacing: 0.03em;
 }
-.team-item-desc {
+.team-item-job {
+  margin-top: 10px;
+  font-size: var(--f-size16);
   line-height: 1.36;
   text-align: center;
   letter-spacing: 0.03em;
@@ -189,9 +237,12 @@ img {
 }
 /* Main end */
 .footer {
+  padding: 60px 0;
   background-color: var(--dark-grey);
 }
 .footer-logo {
+  display: block;
+  margin-bottom: 20px;
   font-family: var(--f-raleway);
   font-weight: 700;
   font-size: 26px;
@@ -212,10 +263,14 @@ img {
   list-style: none;
 }
 .footer-contacts-adress {
+  display: block;
+  margin-bottom: 9px;
   text-decoration: none;
   color: var(--white);
 }
 .footer-contacts-link {
+  display: block;
+  margin-bottom: 9px;
   text-decoration: none;
   color: var(--opasity);
 }
@@ -229,8 +284,13 @@ img {
 /* Portfolio.html */
 .portfolio-filters {
   list-style: none;
-}
+  display: flex;
+  gap: 8px;
+  margin-bottom: 34px;
+  justify-content: center;
+ }
 .portfolio-filters-btn {
+  padding: 6px 22px;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.62;
@@ -241,7 +301,6 @@ img {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-
   transition: ease-in-out 0.4s;
 }
 .portfolio-filters-btn:hover,
@@ -251,9 +310,24 @@ img {
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
 }
+.card-set {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -30px;
+  margin-left: -30px;
+}
 .card {
-  background-color: var(--white);
+  flex-basis: calc(100% / 3 - 30px);
+  margin-top: 30px;
+  margin-left: 30px;
   list-style: none;
+  background-color: var(--white);
+}
+.card-descr {
+  padding: 20px 24px;
+  border-right: 1px solid var(--border-grey);
+  border-bottom: 1px solid var(--border-grey);
+  border-left: 1px solid var(--border-grey);
 }
 .card-title {
   font-size: 18px;
@@ -262,7 +336,8 @@ img {
   color: var(--dark);
 }
 .card-tag {
-  line-height: 1.88px;
+  margin-top: 4px;
+  line-height: 1.88;
   letter-spacing: 0.03em;
   color: var(--grey);
 }
